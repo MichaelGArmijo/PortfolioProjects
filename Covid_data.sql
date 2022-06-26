@@ -1,3 +1,5 @@
+--Death Percentage
+
 select location, date, total_cases, total_deaths, (total_deaths/total_cases)*100
 as DeathPercentage
 from Portfolioproject..CovidDeaths1$
