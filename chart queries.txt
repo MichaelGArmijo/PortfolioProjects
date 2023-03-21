@@ -1,7 +1,10 @@
+--
 SELECT film.film_id, COUNT(*) AS rentals
 FROM rental
-JOIN inventory ON rental.inventory_id = inventory.inventory_id
-JOIN film ON inventory.film_id = film.film_id
+JOIN inventory 
+  ON rental.inventory_id = inventory.inventory_id
+JOIN film
+  ON inventory.film_id = film.film_id
 GROUP BY film.film_id
 ORDER BY rentals DESC
 LIMIT 10;
