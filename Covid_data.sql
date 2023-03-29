@@ -27,8 +27,8 @@ ORDER BY 3,4;
 
 --This query selects each states calculated percentage of population infected. Then order by the location and the date.
 
-SELECT location, date, total_cases, population, (total_cases/population)
-*100 AS PercentPopulationInfected
+SELECT location, date, total_cases, population, (total_cases/population)*100 
+AS PercentPopulationInfected
 FROM Portfolioproject..CovidDeaths1$
 WHERE location LIKE '%states%'
 ORDER BY 1,2;
@@ -43,7 +43,6 @@ ORDER BY 1,2;
 SELECT location, population, max(total_cases) AS HighestInfectionCount,
 max((total_cases/population))*100 AS PercentPopulationInfected
 FROM Portfolioproject..CovidDeaths1$
---where location like '%states%'
 GROUP BY location, population
 ORDER BY PercentPopulationInfected DESC;
 
@@ -146,8 +145,8 @@ RollingPeopleVaccinated numeric
 
 INSERT INTO #PercentPopulationVaccinated
 SELECT dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations,
-sum(convert(bigint,vac.new_vaccinations)) over (partition BY dea.location ORDER
-BY dea.location, dea.date) AS RollingPeopleVaccinated
+sum(convert(bigint,vac.new_vaccinations)) over (partition BY dea.location 
+ORDER BY dea.location, dea.date) AS RollingPeopleVaccinated
 FROM Portfolioproject..CovidDeaths1$ dea
 JOIN Portfolioproject..CovidVaccinations1$ vac
 ON dea.location = vac.location
@@ -162,8 +161,8 @@ FROM #PercentPopulationVaccinated
 
 CREATE view PercentPopulationVaccinated AS
 SELECT dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations,
-sum(convert(bigint,vac.new_vaccinations)) over (partition BY dea.location ORDER
-BY dea.location, dea.date) AS RollingPeopleVaccinated
+sum(convert(bigint,vac.new_vaccinations)) over (partition BY dea.location
+ORDER BY dea.location, dea.date) AS RollingPeopleVaccinated
 FROM Portfolioproject..CovidDeaths1$ dea
 JOIN Portfolioproject..CovidVaccinations1$ vac
 ON dea.location = vac.location
