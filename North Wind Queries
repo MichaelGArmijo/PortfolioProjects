@@ -1,0 +1,71 @@
+--Top Sales Orders with Sales Employee--
+
+SELECT
+[Top Ten Orders by Sales Amount Query].[Order ID],
+[Top Ten Orders by Sales Amount Query].[Order Date],
+[Top Ten Orders by Sales Amount Query].SaleAmount,
+[Top Ten Orders by Sales Amount Query].CompanyName,
+[Top Ten Orders by Sales Amount Query].[Shipped Date],
+Employees.ID,
+Employees.[First Name] & ', ' & Employees.[Last Name] AS FullName,
+Employees.City,
+[Order Details].[Product ID]
+FROM
+(Employees INNER JOIN Orders ON Employees.[ID] = Orders.[Employee ID])
+INNER JOIN ([Top Ten Orders by Sales Amount Query] 
+INNER JOIN [Order Details] 
+ON [Top Ten Orders by Sales Amount Query].[Order ID] = [Order Details].[Order ID]) 
+ON Orders.[Order ID] = [Order Details].[Order ID]
+ORDER BY
+[Top Ten Orders by Sales Amount Query].SaleAmount DESC;
+
+
+--Suppliers, Order Payments, Payment Dates--
+
+SELECT [Purchase Summary Query].[Creation Date], 
+[Purchase Summary Query].[Status], [Purchase Summary Query].
+[Supplier ID], [Purchase Summary Query].[Shipping Fee], 
+[Purchase Summary Query].[Taxes], [Purchase Summary Query].
+[Order Total], [Purchase Summary Query].[Sub Total], 
+[Purchase Summary Query].[Payment Date], [Purchase Summary Query].
+[Approved By], [Purchase Summary Query].[Approved Date], 
+[Purchase Summary Query].[Submitted By], [Purchase Summary Query].
+[Submitted Date], [Purchase Summary Query].[Status ID], 
+[Purchase Summary Query].[Purchase Order ID]
+FROM [Purchase Summary Query];
+
+--Top Purchases by Category--
+
+SELECT [Product Sales by Category].[Order Date], 
+[Product Sales by Category].[Product Name], 
+[Product Sales by Category].[Category], 
+[Product Sales by Category].[Amount]
+FROM [Product Sales by Category];
+
+--Products Target Level and Reorder Level--
+
+SELECT [Products Query1].[Product Name], 
+[Products Query1].[Reorder Level], 
+[Products Query1].[Target Level], 
+[Products Query1].[Standard Cost], 
+[Products Query1].[List Price]
+FROM [Products Query1];
+
+--Customers Orders--
+
+SELECT [Customers Extended].[File As], 
+[Customers Extended].[Contact Name], 
+[Customers Extended].[ID], [Customers Extended].[Company], 
+[Customers Extended].[Last Name], [Customers Extended].[First Name], 
+[Customers Extended].[E-mail Address], [Customers Extended].[Job Title], 
+[Customers Extended].[Business Phone], [Customers Extended].[Home Phone], 
+[Customers Extended].[Mobile Phone], [Customers Extended].[Fax Number], 
+[Customers Extended].[Address], [Customers Extended].[City], 
+[Customers Extended].[State/Province], [Customers Extended].[ZIP/Postal Code], 
+[Customers Extended].[Country/Region], [Customers Extended].[Web Page], 
+[Customers Extended].[Notes], [Customers Extended].[Attachments], 
+[Customers Extended].[Attachments].[FileData], 
+[Attachments].[FileFlags] AS Expr1, [Customers Extended].[Attachments].[FileName], 
+[Attachments].[FileTimeStamp] AS Expr2, [Customers Extended].
+[Attachments].[FileType], [Attachments].[FileURL] AS Expr3
+FROM [Customers Extended];
