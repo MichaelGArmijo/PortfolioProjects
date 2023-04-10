@@ -1,4 +1,4 @@
---Top Sales Orders with Sales Employee--
+/* Top Sales Orders with Sales Employee */
 
 SELECT
 [Top Ten Orders by Sales Amount Query].[Order ID],
@@ -20,7 +20,7 @@ ORDER BY
 [Top Ten Orders by Sales Amount Query].SaleAmount DESC;
 
 
---Suppliers, Order Payments, Payment Dates--
+/* Suppliers, Order Payments, Payment Dates */
 
 SELECT [Purchase Summary Query].[Creation Date], 
 [Purchase Summary Query].[Status], [Purchase Summary Query].
@@ -34,7 +34,7 @@ SELECT [Purchase Summary Query].[Creation Date],
 [Purchase Summary Query].[Purchase Order ID]
 FROM [Purchase Summary Query];
 
---Top Purchases by Category--
+/* Top Purchases by Category */
 
 SELECT [Product Sales by Category].[Order Date], 
 [Product Sales by Category].[Product Name], 
@@ -42,7 +42,7 @@ SELECT [Product Sales by Category].[Order Date],
 [Product Sales by Category].[Amount]
 FROM [Product Sales by Category];
 
---Products Target Level and Reorder Level--
+/* Products Target Level and Reorder Level */
 
 SELECT [Products Query1].[Product Name], 
 [Products Query1].[Reorder Level], 
@@ -51,7 +51,7 @@ SELECT [Products Query1].[Product Name],
 [Products Query1].[List Price]
 FROM [Products Query1];
 
---Customers Orders--
+/* Customers Orders */
 
 SELECT [Customers Extended].[File As], 
 [Customers Extended].[Contact Name], 
